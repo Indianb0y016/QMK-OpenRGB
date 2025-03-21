@@ -32,6 +32,19 @@
 * │Ctl │ Gui│ Alt│         Space          │ Alt│ Fn │  │ ← │ ↓ │ → ││ 0 │ . │   │
 * └────┴────┴────┴────────────────────────┴────┴────┘  └───┴───┴───┘└───┴───┴───┘
 */
+// Caps Lock Indicator
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+	if (host_keyboard_led_state().caps_lock) {
+		RGB_MATRIX_INDICATOR_SET_COLOR(54, 100, 100, 100);
+		}
+	if (!host_keyboard_led_state().num_lock) {
+		RGB_MATRIX_INDICATOR_SET_COLOR(32, 0, 0, 0);
+		}
+    	if (keymap_config.no_gui) {
+      		RGB_MATRIX_INDICATOR_SET_COLOR(88, 0, 0, 0);
+    		}
+	return true;
+}
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
